@@ -1,6 +1,6 @@
 // src/controllers/bookController.js
 
-const Book = require('../models/book'); // assuming you have a book model
+const Book = require('../models/bookModel'); // assuming you have a book model
 
 // Get all books
 exports.getAllBooks = async (req, res) => {

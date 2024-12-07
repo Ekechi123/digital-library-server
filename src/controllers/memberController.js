@@ -23,8 +23,8 @@ const getMemberById = async (req, res) => {
   }
 };
 
-// Add a new member
-const addMember = async (req, res) => {
+// Add a new member (createMember function)
+const createMember = async (req, res) => {
   const { name, role, department, hireDate } = req.body; // Get data from request body
   const newMember = new Member({ name, role, department, hireDate });
 
@@ -65,8 +65,7 @@ const deleteMember = async (req, res) => {
 module.exports = {
   getAllMembers,
   getMemberById,
-  addMember,
+  createMember, // Export the createMember function
   updateMember,
   deleteMember,
 };
-
