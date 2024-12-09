@@ -1,7 +1,7 @@
 const Staff = require('../models/staffModel');  // Import the staff model
 
 // Register a new staff member
-exports.registerStaff = async (req, res) => {
+exports.createStaff = async (req, res) => {
     try {
         const { name, email, password, position } = req.body;
 
@@ -30,8 +30,8 @@ exports.registerStaff = async (req, res) => {
 // Get all staff members
 exports.getAllStaff = async (req, res) => {
     try {
-        const staffList = await Staff.find();
-        return res.status(200).json(staffList);
+        const staffList = await Staff.find(); // Fetch all staff members
+        return res.status(200).json(staffList); // Return the staff members as JSON
     } catch (error) {
         return res.status(500).json({ message: 'Error fetching staff members', error });
     }
@@ -40,11 +40,11 @@ exports.getAllStaff = async (req, res) => {
 // Get a specific staff member by ID
 exports.getStaffById = async (req, res) => {
     try {
-        const staff = await Staff.findById(req.params.id);
+        const staff = await Staff.findById(req.params.id); // Find staff by ID
         if (!staff) {
             return res.status(404).json({ message: 'Staff member not found' });
         }
-        return res.status(200).json(staff);
+        return res.status(200).json(staff); // Return the staff member as JSON
     } catch (error) {
         return res.status(500).json({ message: 'Error fetching staff member', error });
     }
@@ -57,7 +57,7 @@ exports.updateStaff = async (req, res) => {
         if (!updatedStaff) {
             return res.status(404).json({ message: 'Staff member not found' });
         }
-        return res.status(200).json(updatedStaff);
+        return res.status(200).json(updatedStaff); // Return the updated staff member
     } catch (error) {
         return res.status(500).json({ message: 'Error updating staff member', error });
     }
@@ -66,13 +66,12 @@ exports.updateStaff = async (req, res) => {
 // Delete a staff member
 exports.deleteStaff = async (req, res) => {
     try {
-        const deletedStaff = await Staff.findByIdAndDelete(req.params.id);
+        const deletedStaff = await Staff.findByIdAndDelete(req.params.id); // Delete the staff member by ID
         if (!deletedStaff) {
             return res.status(404).json({ message: 'Staff member not found' });
         }
-        return res.status(200).json({ message: 'Staff member deleted successfully' });
+        return res.status(200).json({ message: 'Staff member deleted successfully' }); // Return success message
     } catch (error) {
         return res.status(500).json({ message: 'Error deleting staff member', error });
     }
 };
-
