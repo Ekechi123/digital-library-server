@@ -1,20 +1,20 @@
+// app.js
 const express = require('express');
-const bookRoutes = require('./routes/bookRoutes');  // Routes for books
-const memberRoutes = require('./routes/memberRoutes');  // Routes for members
-const staffRoutes = require('./routes/staffRoutes');  // Routes for staff
-const errorMiddleware = require('./middleware/errorMiddleware');  // Error handling middleware
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
+// Import routes
+const staffRoutes = require('./routes/staff');  // Corrected import
+
+// Initialize the app
 const app = express();
 
-// Middleware to parse JSON bodies for all incoming requests
-app.use(express.json());  // This is for parsing JSON payloads from incoming requests
+// Middlewares
+app.use(cors());  // Enable Cross-Origin Resource Sharing (CORS)
+app.use(bodyParser.json());  // Parse JSON request bodies
 
-// Mount routes for each resource type
-app.use('/api/books', bookRoutes);  // Book routes
-app.use('/api/members', memberRoutes);  // Member routes
-app.use('/api/staff', staffRoutes);  // Staff routes
+// Setup routes
+app.use('/api/staff', staffRoutes);  // Example route
 
-// Error handling middleware should be added at the end of route handling
-app.use(errorMiddleware);  // Global error handler
-
+// Export the app
 module.exports = app;
