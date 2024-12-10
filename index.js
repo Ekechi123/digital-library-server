@@ -1,11 +1,10 @@
-// index.js
 const app = require('./src/app');
 const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB (replace with your actual MongoDB URI)
-mongoose.connect('mongodb://localhost:27017/digital-library', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/digital-library')
   .then(() => {
     console.log('Connected to MongoDB');
   })
